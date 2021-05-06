@@ -28,21 +28,21 @@
                             {% if session.user|lower == "admin"|lower %}
                                 <li><a href="{{ url_for('get_categories') }}">Manage Category</a></li>
                             {% endif %}
-                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                            <li><a href="{{ url_for('logout') }}" class="pink-text">Log Out</a></li>
                         {% endif %}
                     </ul>
             </div>
         </nav>
-            <ul class="sidenav" id="mobile-demo">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
+            <ul class="sidenav grey darken-4 text-shadow" id="mobile-demo">
+                <li><a href="{{ url_for('home') }}" class="white-text">Home</a></li>
                     {% if session.user %}
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Receipes</a></li>
-                        <li><a href="#">Add Recipe</a></li>
-                            {% if session.user|lower == "admin"|lower %}
-                                <li><a href="#">Manage Recipe</a></li>
-                            {% endif %}
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                            <li><a href="{{ url_for('profile', username=session['user']) }}" class="white-text">Profile</a></li>
+                            <li><a href="{{ url_for('get_recipes') }}" class="white-text">Receipes</a></li>
+                            <li><a href="{{ url_for('add_recipe') }}" class="white-text">New Recipe</a></li>
+                        {% if session.user|lower == "admin"|lower %}
+                            <li><a href="{{ url_for('get_categories') }}" class="white-text">Manage Category</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('logout') }}" class="pink-text">Log Out</a></li>
                     {% endif %}
             </ul>
     </header>

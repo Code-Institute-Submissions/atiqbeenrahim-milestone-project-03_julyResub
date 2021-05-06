@@ -21,11 +21,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 video {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -35,19 +34,19 @@ video {
 }
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to left, #43c5d6, #ebbe42);
+    background: linear-gradient(to left, #0a213b, #d5f154);
     mix-blend-mode: overlay;
     z-index: -1;
 }
 
 .home .content {
     align-items: left;
-    margin-top: 7rem;
+    margin-top: 5rem;
     padding-left: 2px;
 }
 
@@ -67,7 +66,7 @@ video {
 
 .home .form-container {
     align-items: center;
-    margin-top: 10rem;
+    margin-top: 6rem;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.9);
