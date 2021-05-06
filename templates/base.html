@@ -15,30 +15,36 @@
 
     <header>
         <!---top navbar--->
-        <div class="navbar-fixed">
-            <nav>
-                <div class="nav-wrapper teal">
-                    <a href="{{ url_for('home') }}" class="brand-logo">Recipe Island</a>
-                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <nav class="nav-extended text-shadow grey darken-4">
+            <div class="nav-wrapper">
+                <a href="{{ url_for('home') }}" class="brand-logo pink-text"><i class="fas fa-cocktail">&nbspRecipe Island</i></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
+                        {% if session.user %}
+                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                            <li><a href="{{ url_for('get_recipes') }}">Receipes</a></li>
+                            <li><a href="{{ url_for('add_recipe') }}">New Recipe</a></li>
+                            {% if session.user|lower == "admin"|lower %}
+                                <li><a href="{{ url_for('get_categories') }}">Manage Category</a></li>
+                            {% endif %}
+                            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                        {% endif %}
+                    </ul>
+            </div>
+        </nav>
+            <ul class="sidenav" id="mobile-demo">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                    {% if session.user %}
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Receipes</a></li>
                         <li><a href="#">Add Recipe</a></li>
-                        <li><a href="#">Manage Recipe</a></li>
+                            {% if session.user|lower == "admin"|lower %}
+                                <li><a href="#">Manage Recipe</a></li>
+                            {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    </ul>
-                </div>
-            </nav>
-            <ul class="sidenav" id="mobile-demo">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Receipes</a></li>
-                <li><a href="#">Add Recipe</a></li>
-                <li><a href="#">Manage Recipe</a></li>
-                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    {% endif %}
             </ul>
-        </div>
     </header>
 
     <section>
@@ -58,6 +64,16 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <section class="footer">
+        <h1 class="credit">Copyright <span>Recipe Island</span> | all rights reserved.</h1>
+            <div class="icons">
+                <a href="https://github.com/atiqbeenrahim/milestone-project-03" class="fab fa-github"></a>
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-instagram"></a>
+            </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

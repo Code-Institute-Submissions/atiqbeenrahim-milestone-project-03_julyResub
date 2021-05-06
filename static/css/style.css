@@ -15,6 +15,8 @@
     line-height: 42px;
 }
 
+
+/* Hero section */
 .home {
     display: flex;
     align-items: center;
@@ -77,4 +79,94 @@ video {
     font-size: 2vw;
     color: #fff;
     text-shadow: 0 0.3rem 0.5rem #000;
+}
+
+/* Footer section */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #222;
+}
+
+.footer .credit {
+    font-size: 2rem;
+    color: #eee;
+}
+
+.footer .credit span {
+    color: #e91e63;
+}
+
+.footer .icons a {
+    font-size: 2rem;
+    margin: 0 0.5rem;
+    height: 4rem;
+    width: 4rem;
+    line-height: 3.5rem;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    transition: 0.2s linear;
+}
+
+.footer .icons a:hover {
+    background: #e91e63;
+}
+
+/* media queries  */
+
+@media (max-width: 991px) {
+    .home {
+        flex-flow: column;
+        padding: 1.5rem;
+    }
+    .home .content {
+        text-align: center;
+    }
+    .home .content h2 {
+        font-size: 4rem;
+    }
+    .home .content h3 {
+        font-size: 3.5rem;
+    }
+    .home .content p {
+        font-size: 1.9rem;
+        padding: 0;
+        border: none;
+    }
+    .home .form-container form input {
+        margin: 10px 0;
+    }
+    .home .form-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 55%;
+    }
+    
+    .footer {
+        flex-flow: column;
+    }
+    .footer .credit {
+        text-align: center;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .home .form-container {
+        width: 100%;
+    }
+    .home .form-container form {
+        width: 100%;
+        margin: 3rem 0;
+    }
 }
