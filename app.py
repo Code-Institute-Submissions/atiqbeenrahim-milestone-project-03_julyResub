@@ -116,13 +116,14 @@ def logout():
 def add_recipe():
     if request.method == "POST":
         recipe = {
-            "recipe_image": request.form.get("recipe_image"),
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
+            "recipe_country": request.form.get("recipe_country"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "instruction": request.form.get("instruction"),
             "date": request.form.get("date"),
+            "recipe_image": request.form.get("recipe_image"),
             "created_by": session["user"]
         }
         mongo.db.recipes.insert_one(recipe)
@@ -137,13 +138,14 @@ def add_recipe():
 def edit_recipe(recipe_id):
     if request.method == "POST":
         submit = {
-            "recipe_image": request.form.get("recipe_image"),
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
+            "recipe_country": request.form.get("recipe_country"),
             "recipe_description": request.form.get("recipe_description"),
             "recipe_ingredients": request.form.get("recipe_ingredients"),
             "instruction": request.form.get("instruction"),
             "date": request.form.get("date"),
+            "recipe_image": request.form.get("recipe_image"),
             "created_by": session["user"]
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
