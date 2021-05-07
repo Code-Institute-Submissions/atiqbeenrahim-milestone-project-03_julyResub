@@ -116,14 +116,14 @@ video {
         border: none;
     }
     .home .form-container form input {
-        margin: 10px 0;
+        margin: 3px 0;
     }
     .home .form-container {
         flex-direction: column;
         align-items: stretch;
     }
     .home .form-container h3 {
-    font-size: 2vw;
+    font-size: 4vw;
     text-shadow: 0 0.3rem 0.5rem #000;
     }
 }
@@ -143,7 +143,7 @@ video {
         margin: 3rem 0;
     }
     .home .form-container h3 {
-    font-size: 2vw;
+    font-size: 4vw;
     text-shadow: 0 0.3rem 0.5rem #000;
-}
+    }
 }
