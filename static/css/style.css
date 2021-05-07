@@ -25,10 +25,6 @@ body {
     line-height: 42px;
 }
 
-nav div a i {
-    padding-left: 20px;
-}
-
 footer div a {
     font-size: 2rem;
     padding-right: 20px;
@@ -97,6 +93,9 @@ video {
     color: #fff;
     text-shadow: 0 0.3rem 0.5rem #000;
 }
+ .home .form-container form input {
+    color: #fff;
+}
 
 /* media queries  */
 
@@ -111,9 +110,6 @@ video {
     .home .content h2 {
         font-size: 4rem;
     }
-    .home .content h3 {
-        font-size: 3.5rem;
-    }
     .home .content p {
         font-size: 1.9rem;
         padding: 0;
@@ -125,6 +121,10 @@ video {
     .home .form-container {
         flex-direction: column;
         align-items: stretch;
+    }
+    .home .form-container h3 {
+    font-size: 2vw;
+    text-shadow: 0 0.3rem 0.5rem #000;
     }
 }
 
@@ -142,4 +142,8 @@ video {
         width: 100%;
         margin: 3rem 0;
     }
+    .home .form-container h3 {
+    font-size: 2vw;
+    text-shadow: 0 0.3rem 0.5rem #000;
+}
 }
