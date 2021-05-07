@@ -1,3 +1,13 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
 .text-shadow {
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -15,6 +25,14 @@
     line-height: 42px;
 }
 
+nav div a i {
+    padding-left: 20px;
+}
+
+footer div a {
+    font-size: 2rem;
+    padding-right: 20px;
+}
 
 /* Hero section */
 .home {
@@ -39,7 +57,7 @@ video {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to left, #0a213b, #d5f154);
+    background: linear-gradient(to left, #020f1d, #b7d62a);
     mix-blend-mode: overlay;
     z-index: -1;
 }
@@ -51,7 +69,7 @@ video {
 }
 
 .home .content h2 {
-    font-size: 3vw;
+    font-size: 3.5vw;
     color: #fff;
     text-shadow: 0 0.3rem 0.5rem #000;
 }
@@ -78,42 +96,6 @@ video {
     font-size: 2vw;
     color: #fff;
     text-shadow: 0 0.3rem 0.5rem #000;
-}
-
-/* Footer section */
-
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    background: #222;
-}
-
-.footer .credit {
-    font-size: 2rem;
-    color: #eee;
-}
-
-.footer .credit span {
-    color: #e91e63;
-}
-
-.footer .icons a {
-    font-size: 2rem;
-    margin: 0 0.5rem;
-    height: 4rem;
-    width: 4rem;
-    line-height: 3.5rem;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-    border: 0.2rem solid #fff;
-    transition: 0.2s linear;
-}
-
-.footer .icons a:hover {
-    background: #e91e63;
 }
 
 /* media queries  */
@@ -149,14 +131,6 @@ video {
 @media (max-width: 768px) {
     html {
         font-size: 55%;
-    }
-    
-    .footer {
-        flex-flow: column;
-    }
-    .footer .credit {
-        text-align: center;
-        padding-bottom: 3rem;
     }
 }
 

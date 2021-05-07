@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="pink-text center-align">Edit Recipe</h3>
+    <h3 class="black-text center-align">Edit Recipe</h3>
 
     <div class="row card-panel grey lighten-5">
         <form class="col s12" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
             <!-- category selection -->
 			<div class="row">
 				<div class="input-field col s12">
-                    <i class="fas fa-folder-open prefix pink-text"></i>
+                    <i class="fas fa-folder-open prefix light-green-text accent-3"></i>
 					<select id="category_name" name="category_name" class="validate" required>
                         <option value="" disabled selected>Choose Category</option>
                         {% for category in categories %}
@@ -25,7 +25,7 @@
             <!-- recipe name -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-pencil-alt prefix pink-text"></i>
+                    <i class="fas fa-pencil-alt prefix light-green-text accent-3"></i>
                     <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50"
                         value="{{ recipe.recipe_name }}" type="text" class="validate" required>
                     <label for="recipe_name">Recipe Name</label>
@@ -34,7 +34,7 @@
             <!-- recipe description -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix pink-text"></i>
+                    <i class="fas fa-align-left prefix light-green-text accent-3"></i>
                     <textarea id="recipe_description" name="recipe_description" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
                         {{- recipe.recipe_description -}}
@@ -45,7 +45,7 @@
             <!-- recipe ingredients -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix pink-text"></i>
+                    <i class="fas fa-align-left prefix light-green-text accent-3"></i>
                     <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
                         {{- recipe.recipe_ingredients -}}
@@ -56,7 +56,7 @@
             <!-- instruction -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-align-left prefix pink-text"></i>
+                    <i class="fas fa-align-left prefix light-green-text accent-3"></i>
                     <textarea id="instruction" name="instruction" minlength="5"
                         maxlength="200" class="materialize-textarea validate" required>
                         {{- recipe.instruction -}}
@@ -67,7 +67,7 @@
             <!-- date picker -->
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="fas fa-calendar-alt prefix pink-text"></i>
+                    <i class="fas fa-calendar-alt prefix light-green-text accent-3"></i>
                     <input id="date" name="date" type="text" 
                         value="{{ recipe.date }}" class="datepicker validate" required>
                     <label for="date">Posting Date</label>
@@ -82,7 +82,7 @@
                         Cancel <i class="fas fa-times-circle right"></i>
                     </a>
                     <button type="submit" class="btn-large grey darken-4 text-shadow">
-                        Edit Recipe <i class="fas fa-edit right"></i>
+                        Edit Recipe <i class="light-green-text accent-3 fas fa-edit right"></i>
                     </button>
                 </div>
             </div>
