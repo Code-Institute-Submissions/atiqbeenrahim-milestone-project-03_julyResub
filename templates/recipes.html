@@ -38,12 +38,16 @@
                 {% endif %}
             </div>
             <div class="collapsible-body">
-                <strong>{{ recipe.category_name }}</strong>
-                <p>{{ recipe.recipe_country }}</p>
+                <strong>Recipe Type: {{ recipe.category_name }}</strong><br/><br/>
+                <p><strong><em>Country:</em></strong>{{ recipe.recipe_country }}</p>
+                <strong><em>Description:</em></strong>
                 <p>{{ recipe.recipe_description }}</p>
+                <strong><em>Ingredients:</em></strong>
                 <p>{{ recipe.recipe_ingredients }}</p>
+                <strong><em>Instructions:</em></strong>
                 <p>{{ recipe.instruction }}</p>
-                <p>{{ recipe.recipe_image }}</p>
+                <strong><em>Recipe Image:</em></strong>
+                <p><{{ recipe.recipe_image }}</p>
                 <p><em>by: {{ recipe.created_by }}</em></p>
             </div>
         </li>
