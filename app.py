@@ -23,11 +23,16 @@ def home():
     return render_template("home.html")
 
 
-
-@app.route("/get_recipes")
-def get_recipes():
+@app.route("/recipes")
+def recipes():
     recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
+
+
+@app.route("/recipe/<recipe_id>")
+def view_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("view_recipe.html", recipe=recipe)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -91,17 +96,14 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
     if session["user"]:
         return render_template("profile.html", username=username)
-
     return redirect(url_for("login"))
-    
 
 
 @app.route("/logout")
@@ -112,7 +114,7 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/add_recipe", methods=["GET", "POST"])
+@app.route("/recipe/add", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
         recipe = {
@@ -128,13 +130,12 @@ def add_recipe():
         }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
-        return redirect(url_for("get_recipes"))
-
+        return redirect(url_for("recipes"))
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_recipe.html", categories=categories)
 
 
-@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+@app.route("/recipe/<recipe_id>/edit", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
     if request.method == "POST":
         submit = {
@@ -150,21 +151,20 @@ def edit_recipe(recipe_id):
         }
         mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, submit)
         flash("Recipe Successfully Updated")
-        
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_recipe.html", recipe=recipe, categories=categories)
 
 
-@app.route("/delete_recipe/<recipe_id>")
+@app.route("/recipe/<recipe_id>/delete")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
     flash("Recipe Successfully Deleted")
-    return redirect(url_for("get_recipes"))
+    return redirect(url_for("recipes"))
 
 
-@app.route("/get_categories")
-def get_categories():
+@app.route("/categories")
+def categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
 
@@ -177,7 +177,7 @@ def add_category():
         }
         mongo.db.categories.insert_one(category)
         flash("New Category Added")
-        return redirect(url_for("get_categories"))
+        return redirect(url_for("categories"))
 
     return render_template("add_category.html")
 
@@ -190,7 +190,7 @@ def edit_category(category_id):
         }
         mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
         flash("Category Successfully Updated")
-        return redirect(url_for("get_categories"))
+        return redirect(url_for("categories"))
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
@@ -200,7 +200,7 @@ def edit_category(category_id):
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category Successfully Deleted")
-    return redirect(url_for("get_categories"))
+    return redirect(url_for("categories"))
 
 
 if __name__ == "__main__":

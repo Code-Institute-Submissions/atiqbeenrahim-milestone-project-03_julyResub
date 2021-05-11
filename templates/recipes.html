@@ -12,7 +12,7 @@
                     <label for="query">Search Recipes</label>
                 </div>
                 <div class="col s12 m4">
-                    <a href="{{ url_for('get_recipes') }}" class="red btn text-shadow">Reset</a>
+                    <a href="{{ url_for('recipes') }}" class="red btn text-shadow">Reset</a>
                     <button type="submit" class="light-green accent-5 btn text-shadow">
                         <i class="fas fa-search left"></i> Search
                     </button>
@@ -20,42 +20,35 @@
             </div>
         </form>
     </div>
+    
+    <div class="divider"></div>
 
-    {% if recipes|length > 0 %}
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header white-text grey darken-4 text-shadow">
-                <div class="col s3">
-                    <i class="fas fa-caret-down"></i>
+    
+    <div class="row">
+        {% if recipes|length > 0 %}
+                <div class="col s4 m7">
+                    {% for recipe in recipes %}
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ recipe.recipe_image }}">
+                                <span class="card-title"><strong>{{ recipe.recipe_name }}</strong></span>
+                         </div>
+                    </div>
+                    <div class="card-content">
+                        <p>{{ recipe.recipe_description }}</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">click here for full recipe</a>
+                    </div>
+                    {% endfor %}
                 </div>
-                <div class="col s9">
-                    <strong>{{ recipe.recipe_name }}</strong> : {{ recipe.date }}
-                </div>
-            </div>
-            <div class="collapsible-body">
-                <strong>Recipe Type: {{ recipe.category_name }}</strong><br/><br/>
-                <p><strong><em>Country:</em></strong>{{ recipe.recipe_country }}</p>
-                <strong><em>Description:</em></strong>
-                <p>{{ recipe.recipe_description }}</p>
-                <strong><em>Ingredients:</em></strong>
-                <p>{{ recipe.recipe_ingredients }}</p>
-                <strong><em>Instructions:</em></strong>
-                <p>{{ recipe.instruction }}</p>
-                <strong><em>Recipe Image:</em></strong>
-                <p><{{ recipe.recipe_image }}</p>
-                <p><em>by: {{ recipe.created_by }}</em></p>
-                {% if session.user|lower == recipe.created_by|lower %}
-                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small light-green accent-5">Edit</a>
-                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small red accent-4">Delete</a>
-                {% endif %}
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-        <h3 class="red-text darken-4 center-align">No Results Found</h3>
-    {% endif %}
+           {% else %}
+            <h3 class="red-text darken-4 center-align">No Results Found</h3>
+    </div>
+         {% endif %}
+            
+             
+        
         
 
 {% endblock %}
