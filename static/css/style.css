@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Texturina:wght@100&display=swap');
+
 body {
+    font-family: 'Texturina', serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
