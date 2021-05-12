@@ -30,9 +30,9 @@ def recipes():
 
 
 @app.route("/recipe/<recipe_id>")
-def view_recipe(recipe_id):
+def recipe_details(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("view_recipe.html", recipe=recipe)
+    return render_template("recipe_details.html", recipe=recipe)
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -77,7 +77,7 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+                    existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     flash("Welcome, {}".format(
                         request.form.get("username")))
@@ -153,7 +153,8 @@ def edit_recipe(recipe_id):
         flash("Recipe Successfully Updated")
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_recipe.html", recipe=recipe, categories=categories)
+    return render_template(
+        "edit_recipe.html", recipe=recipe, categories=categories)
 
 
 @app.route("/recipe/<recipe_id>/delete")

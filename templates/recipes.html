@@ -30,7 +30,7 @@
                 <div class="col s3 m3">
                     <div class="card">
                         <div class="card-image">
-                            <img src="{{ recipe.recipe_image }}">
+                            <img src="{{ recipe.recipe_image }}" onerror="this.src='./static/img/yummy.jpg'">
                                 <span class="card-title text-shadow"><strong>{{ recipe.recipe_name }}</strong></span>
                          </div>
                     </div>
@@ -38,7 +38,7 @@
                         <p>{{ recipe.recipe_description }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">click here for full recipe</a>
+                        <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}">click here for full recipe</a>
                     </div>
                 </div>
             {% endfor %}
