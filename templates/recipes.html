@@ -26,12 +26,12 @@
     
     <div class="row">
         {% if recipes|length > 0 %}
-                <div class="col s4 m7">
-                    {% for recipe in recipes %}
+            {% for recipe in recipes %}
+                <div class="col s3 m3">
                     <div class="card">
                         <div class="card-image">
                             <img src="{{ recipe.recipe_image }}">
-                                <span class="card-title"><strong>{{ recipe.recipe_name }}</strong></span>
+                                <span class="card-title text-shadow"><strong>{{ recipe.recipe_name }}</strong></span>
                          </div>
                     </div>
                     <div class="card-content">
@@ -40,12 +40,12 @@
                     <div class="card-action">
                         <a href="{{ url_for('view_recipe', recipe_id=recipe._id) }}">click here for full recipe</a>
                     </div>
-                    {% endfor %}
                 </div>
-           {% else %}
+            {% endfor %}
+            {% else %}
             <h3 class="red-text darken-4 center-align">No Results Found</h3>
     </div>
-         {% endif %}
+        {% endif %}
             
              
         
