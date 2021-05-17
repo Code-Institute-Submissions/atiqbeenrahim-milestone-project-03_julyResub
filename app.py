@@ -111,9 +111,9 @@ def profile():
         {"username": session["user"]})["username"]
     if session["user"]:
 
-        user_recipes = list(mongo.db.recipes.find({"created_by": username}))
+        recipe = list(mongo.db.recipes.find({"created_by": username}))
         return render_template(
-            "profile.html", username=username, user_recipes=user_recipes
+            "profile.html", username=username, recipes=recipe
             )
     return redirect(url_for("login"))
 
