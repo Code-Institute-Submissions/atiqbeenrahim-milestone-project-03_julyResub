@@ -81,7 +81,7 @@ This is the Backend Development project for Full Stack Software Developement cou
 
 ## Testing
 
-The W3C Markup Validator, W3C CSS Validator and BeautifyTools JavaScript validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
+The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services were used to validate every page of the project to ensure there were no syntax errors in the project.
 
 -   [W3C Markup Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
 -   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_input)
