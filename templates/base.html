@@ -18,13 +18,13 @@
         <!---top navbar--->
         <nav class="nav-extended text-shadow grey darken-4">
             <div class="nav-wrapper">
-                <a href="{{ url_for('home') }}" class="brand-logo light-green-text accent-3"><i class="fas fa-cocktail">&nbspRecipe Island</i></a>
+                <a href="{{ url_for('home') }}" class="brand-logo light-green-text accent-3" style="padding: 0px 20px;"><i class="fas fa-cocktail"><span style="padding: 0px 10px;">Recipe Island</span></i></a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="{{ url_for('home') }}">Home</a></li>
                         <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
                         {% if session.user %}
-                            <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+                            <li><a href="{{ url_for('profile') }}">Profile</a></li>
                             <li><a href="{{ url_for('add_recipe') }}">New Recipe</a></li>
                             {% if session.user|lower == "admin"|lower %}
                                 <li><a href="{{ url_for('categories') }}">Manage Category</a></li>
@@ -41,7 +41,7 @@
                 <li><a href="{{ url_for('home') }}" class="white-text">Home</a></li>
                 <li><a href="{{ url_for('recipes') }}" class="white-text">Recipes</a></li>
                     {% if session.user %}
-                            <li><a href="{{ url_for('profile', username=session['user']) }}" class="white-text">Profile</a></li>
+                            <li><a href="{{ url_for('profile') }}" class="white-text">Profile</a></li>
                             <li><a href="{{ url_for('add_recipe') }}" class="white-text">New Recipe</a></li>
                         {% if session.user|lower == "admin"|lower %}
                             <li><a href="{{ url_for('categories') }}" class="white-text">Manage Category</a></li>
@@ -73,7 +73,7 @@
     </main>
 
     <footer class="page-footer grey darken-4">    
-        <div class="footer-copyright">
+        <div class="footer-copyright" style="padding: 0px 10px;">
             <div class="container">
                 © 2021 Copyright | Recipe Island | All rights reserved.
             </div>
@@ -81,7 +81,7 @@
                 <a href="#" class="light-green-text accent-3 fab fa-facebook-f"></a>
                 <a href="#" class="light-green-text accent-3 fab fa-twitter"></a>
                 <a href="#" class="light-green-text accent-3 fab fa-instagram"></a>
-    </div>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" 

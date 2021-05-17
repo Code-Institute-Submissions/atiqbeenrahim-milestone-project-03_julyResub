@@ -1,31 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="row">
-    <div class="col s12 m12">
-        <div class="card-panel grey darken-4 white-text">
-            <div class="col s12 m6 l3">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{ recipe.recipe_image }}">
-                            <span class="card-title text-shadow"><strong>{{ recipe.recipe_name }}</strong></span>
+    <div class="row">
+        <div class="col s12 m12">
+            <div class="card-panel grey darken-4 white-text">
+                <div class="col s12 m6 l3">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ recipe.recipe_image }}" onerror="this.src='/static/img/yummy.jpg'">
+                        </div>
                     </div>
                 </div>
+                <h5>{{ recipe.recipe_name }}</h5>
+                <p><strong><em>Recipe Type: </em></strong> {{ recipe.category_name }}</p>
+                <p><strong><em>Country: </em></strong> {{ recipe.recipe_country }}</p>
+                <p><strong><em>Posted on: </em></strong> {{ recipe.date }}</p>
+                <p><em>by: {{ recipe.created_by }}</em></p>
+                <strong><em>Ingredients:</em></strong>
+                <p>{{ recipe.recipe_ingredients }}</p>
+                <strong><em>Instructions:</em></strong>
+                <p>{{ recipe.instruction }}</p>
+                {% if session.user|lower == recipe.created_by|lower %}
+                    <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small light-green accent-5">Edit</a>
+                    <button data-target="modal1" class="btn-small modal-trigger red accent-4">Delete</button>
+                {% endif %}
             </div>
-            <p><strong>Recipe Type: {{ recipe.category_name }}</strong></p>
-            <p><strong><em>Country:</em></strong>{{ recipe.recipe_country }}</p>
-            <strong><em>Ingredients:</em></strong>
-            <p>{{ recipe.recipe_ingredients }}</p>
-            <strong><em>Instructions:</em></strong>
-            <p>{{ recipe.instruction }}</p>
-            <p><strong><em>Posted on:</em></strong>{{ recipe.date }}</p>
-            <p><em>by: {{ recipe.created_by }}</em></p>
-            {% if session.user|lower == recipe.created_by|lower %}
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="btn-small light-green accent-5">Edit</a>
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="btn-small red accent-4">Delete</a>
-            {% endif %}
         </div>
     </div>
-</div>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Are you sure?</h4>
+            <p>Recipe will be deleted from the profile</p>
+        </div>
+        <div class="modal-footer">
+            <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="modal-close waves-effect waves-green btn-flat">Yes</a>
+            <a href="{{ url_for('recipes') }}" class="modal-close waves-effect waves-green btn-flat">No</a>
+        </div>
+    </div>
 
 {% endblock %}

@@ -80,6 +80,28 @@ video {
     border-left: 0.3rem solid #ddd;
 }
 
+.recipe_card {
+     height: 420px;
+}
+
+.recipe_card .card-image img {
+    height: 250px;
+    object-fit: cover;
+}
+.recipe_card .card-content span {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recipe_card .card-content p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 /* media queries  */
 
 @media (max-width: 991px) {

@@ -11,8 +11,22 @@
             
         </div>
     </div>
-    <div class="row">
 
+    <div class="row">
+        {% for user_recipe in recipes %}
+            <div class="col s12 m4">
+                <div class="card recipe_card">
+                    <div class="card-image">
+                        <img src="{{ recipe.recipe_image }}" onerror="this.src='/static/img/yummy.jpg'">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title"><strong>{{ recipe.recipe_name }}</strong></span>
+                        <p>{{ recipe.recipe_description }}</p>
+                        <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}">See more</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 
 {% endblock %}

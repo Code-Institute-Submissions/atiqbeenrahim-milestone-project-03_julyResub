@@ -29,7 +29,7 @@ def recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/recipe/<recipe_id>")
+@app.route("/recipe/<recipe_id>/view")
 def recipe_details(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("recipe_details.html", recipe=recipe)
@@ -96,13 +96,25 @@ def login():
     return render_template("login.html")
 
 
+def is_admin():
+    if session["user"] == 'admin':
+        return True
+    else:
+        return False
+
+
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+    print(session["user"])
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     if session["user"]:
-        return render_template("profile.html", username=username)
+
+        user_recipes = list(mongo.db.recipes.find({"created_by": username}))
+        return render_template(
+            "profile.html", username=username, user_recipes=user_recipes
+            )
     return redirect(url_for("login"))
 
 
@@ -172,39 +184,51 @@ def categories():
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
-    if request.method == "POST":
-        category = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.insert_one(category)
-        flash("New Category Added")
-        return redirect(url_for("categories"))
+    is_user_admin = is_admin()
+    if is_user_admin:
+        if request.method == "POST":
+            category = {
+                "category_name": request.form.get("category_name")
+            }
+            mongo.db.categories.insert_one(category)
+            flash("New Category Added")
+            return redirect(url_for("categories"))
 
-    return render_template("add_category.html")
+        return render_template("add_category.html")
+    else:
+        return redirect(url_for("home"))
 
 
-@app.route("/edit_category/<category_id>", methods=["GET", "POST"])
+@app.route("/category/<category_id>/edit", methods=["GET", "POST"])
 def edit_category(category_id):
-    if request.method == "POST":
-        submit = {
-            "category_name": request.form.get("category_name")
-        }
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
-        flash("Category Successfully Updated")
-        return redirect(url_for("categories"))
+    is_user_admin = is_admin()
+    if is_user_admin:
+        if request.method == "POST":
+            submit = {
+                "category_name": request.form.get("category_name")
+            }
+            mongo.db.categories.update({"_id": ObjectId(category_id)}, submit)
+            flash("Category Successfully Updated")
+            return redirect(url_for("categories"))
 
-    category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    return render_template("edit_category.html", category=category)
+        category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+        return render_template("edit_category.html", category=category)
+    else:
+        return redirect(url_for("home"))
 
 
-@app.route("/delete_category/<category_id>")
+@app.route("/category/<category_id>/delete")
 def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category Successfully Deleted")
-    return redirect(url_for("categories"))
+    is_user_admin = is_admin()
+    if is_user_admin:
+        mongo.db.categories.remove({"_id": ObjectId(category_id)})
+        flash("Category Successfully Deleted")
+        return redirect(url_for("categories"))
+    else:
+        return redirect(url_for("home"))
 
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
