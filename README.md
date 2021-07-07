@@ -145,22 +145,23 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 ## Deployment
 
 ### Requirements to Deploy
-    - Python3
-    - Github account
-    - Heroku account
-    - MongoDB account
+    - Python 3
+    - Github Account
+    - Heroku Account
+    - MongoDB Account
 
 #### Heroku Deployment
-    Before creating a Heroku app make sure your project has these two files:
-    - requirements.txt - You can create one by using pip3 freeze --local > requirements.txt
-    - Procfile - You can create one by using echo web: python run.py > Procfile
     
-    <h4>Create application:</h4>
-    - Navigate to Heroku's site.
-    - Register and/or Login as applicable.
-    - Click on the new button in the top right and select "Create new app".
-    - Enter the app name and region.
-    - Click the create app button.
+    - Before creating Heroku App, i need to create this two files in the project:
+        1. requirment.txt
+        2. Procfile
+
+    - Creating the App:
+        1. Go to Heroku site
+        2. Register/Log in
+        3. select "create a new app"
+        4. Enter app name and select your closest region
+        5. Finally select "create app" for the deployment.
 
 
 
