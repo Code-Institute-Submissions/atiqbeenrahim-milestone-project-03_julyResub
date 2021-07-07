@@ -151,18 +151,19 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 -   MongoDB Account
 
 #### Heroku Deployment
-    
-    - Before creating Heroku App, i need to create this two files in the project:
-        1. requirment.txt
-        2. Procfile
 
-    - Creating the App:
-        1. Go to Heroku site
-        2. Register/Log in
-        3. select "create a new app"
-        4. Enter app name and select your closest region
-        5. Finally select "create app" for the deployment.
+-   Before creating Heroku App, I need this following files in the project:
 
+    1. requirment.txt
+    2. Procfile
+
+-   Creating the APP:
+
+    1. Go to Heroku website
+    2. Log In/Register
+    3. Select "create a new app"
+    4. Give the name of the App and select closest Region
+    5. Finally click on "create app" for deployment process.
 
 
 
