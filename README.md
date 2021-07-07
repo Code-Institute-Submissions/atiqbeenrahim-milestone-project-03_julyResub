@@ -167,13 +167,13 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 
 #### Connecting Github Repository with the Heroku APP:
 
-    1. Go to deploy tab in Heroku and select connect to git hub
-    2. You Have to be signed in to the Git hub account during the process
-    3. In the github connect section of Heroku find your repository name and select that.
-    4. Then select connect.
+1. Go to deploy tab in Heroku and select connect to git hub
+2. You Have to be signed in to the Git hub account during the process
+3. In the github connect section of Heroku find your repository name and select that repo
+4. Then select connect.
 
-#### Set the evironment variable in Heroku app.
-#### Enable automatic deployment in the Heroku so that it will be deployed autimatically everytime you make changes in the Github repo.
+##### Set the evironment variable in Heroku app.
+##### Enable automatic deployment in the Heroku so that it will be deployed autimatically everytime you make changes in the Github repo.
 
 
 ## Credits
