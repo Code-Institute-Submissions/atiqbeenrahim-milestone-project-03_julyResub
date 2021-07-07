@@ -166,9 +166,6 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
     5. Finally click on "create app" for deployment process.
 
 
-
-
-
 ## Credits
 
 ### Code
