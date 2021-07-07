@@ -50,12 +50,12 @@ This is the Backend Development project for Full Stack Software Developement cou
 ## Data Schema
 
 - There are three collections in the database:
-    i. users
-    ii. recipes
-    iii. categories
+    1. users
+    2. recipes
+    3. categories
     <h2 align="center"><img src="https://i.ibb.co/dcN4wPR/Data-Schema.png"></h2>
     
-    <h2>The image above was the data model that I came up with for the project.</h2>
+    <h3>The image above was the data model that I came up with for the project.</h3>
     - The following image is from my database how it storing data to 'recipes' collection which is related to 'users' and 'categories' collection:
     <h2 align="center"><img src="https://i.ibb.co/4wk9yW9/recipes-collection.png"></h2>
     
