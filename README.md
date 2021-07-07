@@ -172,8 +172,8 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 3. In the github connect section of Heroku find your repository name and select that repo
 4. Then select connect.
 
-##### Set the evironment variable in Heroku app.
-##### Enable automatic deployment in the Heroku so that it will be deployed autimatically everytime you make changes in the Github repo.
+##### Then Set the evironment variable in Heroku app.
+##### Enable automatic deployment in the Heroku so that it will be deployed automatically everytime you make changes in the Github repo.
 
 
 ## Credits
