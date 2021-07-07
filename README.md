@@ -145,10 +145,10 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 ## Deployment
 
 ### Requirements to Deploy
-    - Python 3
-    - Github Account
-    - Heroku Account
-    - MongoDB Account
+-   Python 3
+-   Github Account
+-   Heroku Account
+-   MongoDB Account
 
 #### Heroku Deployment
     
