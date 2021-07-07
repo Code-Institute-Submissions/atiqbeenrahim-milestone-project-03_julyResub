@@ -91,6 +91,9 @@ This is the Backend Development project for Full Stack Software Developement cou
     - GitHub is used to store the projects code after being pushed from Git.
 1. [draw.io:](http://draw.io/)
     - draw.io was used to create the wireframes during the design process.
+1. [QuickDBD:](https://www.quickdatabasediagrams.com/)
+    - Quick was used to create the Data Schema.
+
 
 ## Testing
 
