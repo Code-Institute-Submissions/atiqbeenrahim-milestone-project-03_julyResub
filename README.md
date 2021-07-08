@@ -47,7 +47,7 @@ This is the Backend Development project for Full Stack Software Developement cou
 
 -   Interactive elements
 
-## Data Schema
+## Database Schema
 
 - There are three collections in the database:
     1. users
@@ -152,14 +152,14 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 
 #### Heroku Deployment
 
--   Before creating Heroku App, I need this following files in the project:
+-   Before creating Heroku App, we need this following files in the project:
 
-    1. requirment.txt
-    2. Procfile
+    1. requirments.txt (pip3 freeze --local > requirments.txt)
+    2. Procfile (python run.py > Procfile)
 
 -   Creating the APP:
 
-    1. Go to Heroku website
+    1. Navigate to Heroku website [here](https://www.heroku.com/)
     2. Log In/Register
     3. Select "create a new app"
     4. Give the name of the App and select closest Region
@@ -172,9 +172,52 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 3. In the github connect section of Heroku find your repository name and select that repo
 4. Then select connect.
 
-##### Then Set the evironment variable in Heroku app.
-##### Enable automatic deployment in the Heroku so that it will be deployed automatically everytime you make changes in the Github repo.
+#### Then Set the evironment variable in Heroku app.
+1. Click the Settings tab and click the Reveal Config Vars button and add the following:
 
+| Key | Value |
+| :-: | :---: |
+| IP  | 0.0.0.0 |
+| PORT | 5000 |
+| MONGO_DBNAME | Your MONGO_DBNAME |
+| MONGO_URI | Your MONGO_URI |
+| SECRET_KEY| Your SECRET_KEY |
+
+    * MONGO_DBNAME - This is the name of the database you are trying to connect to within MongoDB.
+    * MONGO_URI - This can be found on the MongoDB website by following these steps:
+        - In the clusters tab click connect on the associated cluster.
+        - Click connect > Connect your application
+        - Copy the string and substitute the password (from Database access not your MongoDB site password) and    
+            "myFirstDatabase" to your DB name.
+    * SECRET_KEY - This is a custom string set up to secure the application and to keep client-side sessions secure.
+
+#### Enable automatic deployment 
+1. Click the Deploy tab again.
+2. Under Automatic deploys section, choose the branch you want to deploy from and then click the "Enable Automatic Deploys" button.
+3. Click the "Deploy Branch" button underneath to deploy the app the Heroku servers.
+
+#### Creating a local clone
+* NOTE: This project will not run locally with database connections unless you create an env.py file to hold the variables for IP, PORT, MONGO_DBNAME, MONGO_URI and SECRET_KEY. The information used to run this project are private and have not been pushed to the GitHub repository for this reason.
+Once you have done the above you can follow these steps to create a local copy on your computer:
+1. Navigate to the GitHub Repository for the project.
+2. Click the Code drop down button.
+3. Either unpackage locally or download as a ZIP file.
+4. Open with your preferred IDE or copy Git URL from the HTTPS field.
+
+* If you chose to copy the Git URL then follow these additional steps:
+1. Open a terminal window on your computer (or in your preferred IDE) in a directory of your choice.
+2. In the terminal window type git clone https://github.com/atiqbeenrahim/milestone-project-03.git and press enter to confirm.
+3. This will create a local clone of the project in your chosen directory.
+4. For the project to function fully you must install the required dependencies from "requirements.txt"
+5. To do this, type pip3 install requirements.txt
+6. To run the app in your local IDE type python3 app.py
+
+#### Fork Project
+To contribute to this website you can Fork it by following the procedure below:
+* Go to the repository page.
+* Click the Fork button on the top right of the page.
+* This creates a copy in your personal repository.
+* When you're finished making changes, return to original repository and press "New Pull Request" to request your changes be merged into the original project.
 
 ## Credits
 
