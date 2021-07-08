@@ -183,13 +183,13 @@ The W3C Markup Validator, W3C CSS Validator and JavaScript validator Services we
 | MONGO_URI | Your MONGO_URI |
 | SECRET_KEY| Your SECRET_KEY |
 
-    * MONGO_DBNAME - This is the name of the database you are trying to connect to within MongoDB.
-    * MONGO_URI - This can be found on the MongoDB website by following these steps:
-        - In the clusters tab click connect on the associated cluster.
-        - Click connect > Connect your application
-        - Copy the string and substitute the password (from Database access not your MongoDB site password) and    
-            "myFirstDatabase" to your DB name.
-    * SECRET_KEY - This is a custom string set up to secure the application and to keep client-side sessions secure.
+- MONGO_DBNAME - This is the name of the database you are trying to connect to within MongoDB.
+- MONGO_URI - This can be found on the MongoDB website by following these steps:
+    - In the clusters tab click connect on the associated cluster.
+    - Click connect > Connect your application
+    - Copy the string and substitute the password (from Database access not your MongoDB site password) and    
+    "myFirstDatabase" to your DB name.
+    - SECRET_KEY - This is a custom string set up to secure the application and to keep client-side sessions secure.
 
 #### Enable automatic deployment 
 1. Click the Deploy tab again.
